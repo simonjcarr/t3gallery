@@ -11,6 +11,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { extractRouterConfig } from "uploadthing/server";
 import React from "react";
+import { ThemeProvider } from "~/components/theme-provider";
 
 
 export const metadata: Metadata = {
@@ -38,16 +39,24 @@ export default function RootLayout({
            */
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
-        <body className="`font-sans ${inter.variable}`">
-          <TopNav />
-          <div className="h-screen grid grid-rows-[auth, 1fr]">
 
-            <main className="overflow-y-scroll">
-              {children}
-            </main>
-          </div>
-          {modal}
-          <div id="modal-root" />
+        <body className="`font-sans ${inter.variable}`">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TopNav />
+            <div className="h-screen grid grid-rows-[auth, 1fr]">
+
+              <main className="overflow-y-scroll">
+                {children}
+              </main>
+            </div>
+            {modal}
+            <div id="modal-root" />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
