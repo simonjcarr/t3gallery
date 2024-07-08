@@ -12,6 +12,7 @@ import { ourFileRouter } from "./api/uploadthing/core";
 import { extractRouterConfig } from "uploadthing/server";
 import React from "react";
 import { ThemeProvider } from "~/components/theme-provider";
+import { Toaster } from "~/components/ui/sonner";
 
 
 export const metadata: Metadata = {
@@ -56,6 +57,7 @@ export default function RootLayout({
             </div>
             {modal}
             <div id="modal-root" />
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
